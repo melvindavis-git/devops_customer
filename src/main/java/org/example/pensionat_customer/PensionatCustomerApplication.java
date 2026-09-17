@@ -17,7 +17,7 @@ public class PensionatCustomerApplication {
     }
 
     @Bean
-    public CommandLineRunner createRooms(CustomerRepository customerRepo) {
+    public CommandLineRunner createCustomers(CustomerRepository customerRepo) {
         return (args) -> {
             customerRepo.save(new Customer("Melvin", "melvin@gmail.com", "070123456"));
             customerRepo.save(new Customer("Tim", "tim@gmail.com", "070123456"));
