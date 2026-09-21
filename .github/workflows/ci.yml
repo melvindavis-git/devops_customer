@@ -48,6 +48,18 @@ jobs:
       - name: Build with Maven
         run: mvn -B package -DskipTests
 
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: docker build -t mndavis/customer:latest .
+
+      - name: Push Docker image
+        run: docker push mndavis/customer:latest
+
         #      - name: Start the whole system with docker
         #        run: docker compose up -d --build
         #
